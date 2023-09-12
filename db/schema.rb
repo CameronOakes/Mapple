@@ -10,9 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_173948) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_191448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "continent"
+    t.string "capital"
+    t.string "currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_questions", force: :cascade do |t|
+    t.boolean "is_correct", default: false
+    t.bigint "question_id", null: false
+    t.bigint "mapple_game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mapple_game_id"], name: "index_game_questions_on_mapple_game_id"
+    t.index ["question_id"], name: "index_game_questions_on_question_id"
+  end
+
+  create_table "mapple_games", force: :cascade do |t|
+    t.integer "score"
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_mapple_games_on_country_id"
+    t.index ["user_id"], name: "index_mapple_games_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.integer "difficulty"
+    t.bigint "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_questions_on_country_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_173948) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "game_questions", "mapple_games"
+  add_foreign_key "game_questions", "questions"
+  add_foreign_key "mapple_games", "countries"
+  add_foreign_key "mapple_games", "users"
+  add_foreign_key "questions", "countries"
 end
