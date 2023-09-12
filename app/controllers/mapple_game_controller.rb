@@ -1,0 +1,3 @@
+class MappleGameController < ApplicationController
+
+end
