@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+  <h1>Welcome to Mapple</h1>
+
+  <div class="btn-group mt-3">
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success ml-2" %>
+      <%= link_to "Continue as Guest", your_guest_path, class: "btn btn-secondary ml-2" %>
+    <% end %>
+  </div>
+</div>
