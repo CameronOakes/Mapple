@@ -4,6 +4,9 @@
   <div class="btn-group mt-3">
     <% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+      <%= simple_form_for @mapple_game do |f| %>
+        <%= f.submit "Start Game", class: "btn btn-primary" %>
+      <% end %>
     <% else %>
       <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
       <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success ml-2" %>
