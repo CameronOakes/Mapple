@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MappleGameControllerTest < ActionDispatch::IntegrationTest
+class MappleGamesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
