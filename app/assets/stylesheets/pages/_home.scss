@@ -1,1 +1,88 @@
-// Specific CSS for your home-page
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.vh-100 {
+  background: linear-gradient(to bottom, #c5cbe47f, #f48d8b7f);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.vh-100::after {
+  content: '';
+  background-image: url('/assets/Mapple.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 25%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h1 {
+  font-family: 'Comfortaa';
+  font-size: 50px;
+  color: #e45d62;
+  margin-bottom: 20px;
+  text-shadow:
+  -0.5px -0.5px 0 #333,
+   0.5px -0.5px 0 #333,
+  -0.5px  0.5px 0 #333,
+   0.5px  0.5px 0 #333;
+}
+
+.MappleButton {
+  font-family: 'Comfortaa';
+  font-size: 15px;
+  text-align: center;
+  width: 125px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5383b1;
+  background-color: #f48c8b;
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.MappleButton::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  border-radius: 20px;
+  z-index: -1;
+  text-decoration: none;
+}
+
+.MappleButton:hover {
+  background-color: #c5cbe4;
+  color: #5383b1;
+  border-color: #5383b1;
+  text-decoration: none;
+}
+
+.MappleButton:active {
+  background-color: #f48c8b;
+  color: #fff;
+  text-decoration: none;
+}

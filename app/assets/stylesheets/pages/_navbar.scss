@@ -1,0 +1,50 @@
+ .navbar {
+  font-family: 'Comfortaa';
+  font-size: 14px;
+  background: linear-gradient(to top, #c5cbe47f, #f48d8b7f);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75px;
+}
+
+.MappleNavbarLink {
+  color: #fff;
+  padding: 20px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.MappleNavbarLink:hover {
+  color: #e45d62;
+  text-decoration: none;
+  transform: scale(1.25);
+}
+
+.MappleLogo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.MappleLogo.clicked {
+  transform: scale(1.25);
+}
+
+.dropdown-menu {
+  border: 1px solid #5383b1 !important;
+  background-color: #c5cbe4 !important;
+  border-collapse: separate;
+  position: absolute;
+  top: 100%;
+  transform: translateX(15%);
+  right: 100%;
+  max-width: 100%;
+}
