@@ -1,5 +1,8 @@
 <div class="container">
   <h1><%= @country.name %></h1>
+
+  <p><%= @questions %></p>
+
   <%= form_with url: mapple_game_path(@mapple_game), method: :get do |f| %>
     <%= f.text_field :query  %>
     <%= f.submit %>
