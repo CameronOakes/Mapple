@@ -19,8 +19,16 @@ class MappleGamesController < ApplicationController
 
   def show
     @mapple_game = MappleGame.find(params[:id])
-    @country = Country.all.sample
+    @country = Country.all[5]
     # TODO: create question logic when seed is filled with questions.
+
+    @right_answer = ''
+    @wrong_answer = ''
+
+    @guess = params[:query].capitalize if params[:query]
+
+    @right_answer = 'Congrats' if @guess == @country.name
+    @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
   end
 
   def new
