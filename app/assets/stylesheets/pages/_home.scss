@@ -1,1 +1,256 @@
-// Specific CSS for your home-page
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.vh-100, .MappleLogin {
+  background: linear-gradient(to bottom, #c5cbe47f, #f48d8b7f);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.vh-100::after {
+  content: '';
+  background-image: url('/assets/Mapple.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 25%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h1 {
+  font-family: 'Comfortaa';
+  font-size: 50px;
+  color: #e45d62;
+  margin-bottom: 20px;
+  text-shadow:
+  -0.5px -0.5px 0 #333,
+   0.5px -0.5px 0 #333,
+  -0.5px  0.5px 0 #333,
+   0.5px  0.5px 0 #333;
+}
+
+.MappleButton {
+  font-family: 'Comfortaa';
+  font-size: 15px;
+  text-align: center;
+  width: 125px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5383b1;
+  background-color: #f48c8b;
+  color: #fff;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, font-size 0.25s ease;
+  text-decoration: none;
+}
+
+.MappleButton:hover {
+  background-color: #c5cbe4;
+  color: #5383b1;
+  border-color: #5383b1;
+  text-decoration: none;
+  font-size: 18.75px;
+}
+
+.MappleButton:active {
+  background-color: #f48c8b;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.MappleLogin .form-input input[type="text"],
+.MappleLogin .form-input input[type="password"],
+.MappleLogin .form-input input[type="email"],
+.MappleLogin .form-input select,
+.MappleLogin .form-input textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #5383b1;
+  border-radius: 25px;
+  background-color: #e45d627f;
+  color: #fff;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: center;
+}
+
+.MappleLogin .form-input input::placeholder,
+.MappleLogin .form-input select::placeholder,
+.MappleLogin .form-input textarea::placeholder {
+  font-family: 'Comfortaa', sans-serif;
+  color: #fff;
+}
+
+.MappleLogin .form-input input[type="text"]:hover,
+.MappleLogin .form-input input[type="password"]:hover,
+.MappleLogin .form-input input[type="email"]:hover,
+.MappleLogin .form-input select:hover,
+.MappleLogin .form-input textarea:hover {
+  background-color: #c5cbe4;
+  border-color: #5383b1;
+  color: #5383b1;
+}
+
+.MappleLogin .form-input input[type="text"]:focus,
+.MappleLogin .form-input input[type="password"]:focus,
+.MappleLogin .form-input input[type="email"]:focus,
+.MappleLogin .form-input select:focus,
+.MappleLogin .form-input textarea:focus {
+  outline: none;
+  background-color: #c5cbe4;
+  border-color: #5383b1;
+  color: #5383b1;
+}
+
+.MappleLogin .form-input .field_with_errors input[type="text"],
+.MappleLogin .form-input .field_with_errors input[type="password"],
+.MappleLogin .form-input .field_with_errors input[type="email"],
+.MappleLogin .form-input .field_with_errors select,
+.MappleLogin .form-input .field_with_errors textarea {
+  border-color: #e45d62;
+}
+
+.MappleLogin .form-input input::placeholder,
+.MappleLogin .form-input select::placeholder,
+.MappleLogin .form-input textarea::placeholder {
+  font-family: 'Comfortaa', sans-serif;
+  color: #fff;
+  transition: opacity 0.25s ease;
+}
+
+.MappleLogin .form-input input[type="text"]:focus::placeholder,
+.MappleLogin .form-input input[type="password"]:focus::placeholder,
+.MappleLogin .form-input input[type="email"]:focus::placeholder,
+.MappleLogin .form-input select:focus::placeholder,
+.MappleLogin .form-input textarea:focus::placeholder {
+  color: transparent;
+}
+
+.MappleCheck {
+  display: none !important;
+}
+
+.MappleCheckLabel {
+  width: 200px;
+  position: relative;
+  left: 75px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 15px;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.MappleCheckLabel:hover {
+  color: #74bc9c;
+}
+
+.MappleCheck:checked + .MappleCheckLabel:hover {
+  color: #fff;
+}
+
+.MappleCheckLabel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.MappleCheck:checked + .MappleCheckLabel {
+  color: #74bc9c;
+  left: 65px;
+}
+
+.MappleLoginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MappleLoginButton .MappleLoginButton {
+  font-family: 'Comfortaa';
+  font-size: 15px;
+  text-align: center;
+  width: 125px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5383b1;
+  background-color: #e45d627f;
+  color: #fff;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, font-size 0.25s ease;
+  text-decoration: none;
+}
+
+.MappleLoginButton .MappleLoginButton:hover {
+  background-color: #c5cbe4;
+  color: #5383b1;
+  border-color: #5383b1;
+  text-decoration: none;
+  font-size: 18.75px;
+}
+
+.MappleLoginButton .MappleLoginButton:active {
+  background-color: #f48c8b;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.MappleLinkContainer {
+  text-align: center;
+  display: block;
+}
+
+.MappleLink {
+  text-decoration: none;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+.MappleLink:hover {
+  text-decoration: none;
+  color: #5383b1;
+}
+
+.mapple-message {
+  background-color: #e45d627f !important;
+  color: #fff !important;
+  border: 1px solid #5383b1 !important;
+  border-radius: 5px !important;
+  font-family: 'Comfortaa', sans-serif !important;
+  font-size: 15px !important;
+  overflow: hidden;
+}
