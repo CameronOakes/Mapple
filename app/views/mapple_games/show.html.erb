@@ -1,4 +1,13 @@
-<div class="container">
+<div class="container" data-controller="insert-question">
   <h1><%= @country.name %></h1>
 
+  <p data-insert-question-target="question" data-questions="<% @questions.to_json %>"><%= @questions.first.content %></p>
+
+  <%= form_with url: mapple_game_path(@mapple_game), method: :get, data: { insert_question_target: "form" } do |f| %>
+    <%= f.text_field :query  %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= @wrong_answer if @wrong_answer %>
+  <%= @right_answer if @right_answer %>
 </div>
