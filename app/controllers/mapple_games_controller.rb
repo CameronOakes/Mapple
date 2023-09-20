@@ -27,22 +27,11 @@ class MappleGamesController < ApplicationController
 
     @guess = params[:query].capitalize if params[:query]
 
-    # respond_to do |format|
-    #   if @mapple_game.save
-    #     format.html { redirect_to mapple_game_path(@mapple_game) }
-    #     format.json
-    #   else
-    #     format.html { render 'mapple_games/show', status: :unprocessable_entity }
-    #     format.json
-    #   end
-    # end
-
     if params[:counter].present?
       @counter = params[:counter].to_i + 1
     else
       @counter = 0
     end
-
 
     @questions = @country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)

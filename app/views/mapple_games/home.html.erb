@@ -3,7 +3,7 @@
 
   <div class="btn-group mt-3">
     <% if user_signed_in? %>
-      <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "MappleButton" %>
+      <%= link_to "sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "MappleButton" %>
       <%= simple_form_for @mapple_game do |f| %>
         <%= f.submit "start game", class: "MappleButton" %>
       <% end %>
