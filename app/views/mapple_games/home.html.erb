@@ -1,16 +1,16 @@
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
-  <h1>Welcome to Mapple</h1>
+  <h1>MAPPLE</h1>
 
   <div class="btn-group mt-3">
     <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+      <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "MappleButton" %>
       <%= simple_form_for @mapple_game do |f| %>
-        <%= f.submit "Start Game", class: "btn btn-primary" %>
+        <%= f.submit "start game", class: "MappleButton" %>
       <% end %>
     <% else %>
-      <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success ml-2" %>
-      <%= link_to "Continue as Guest", your_guest_path, class: "btn btn-secondary ml-2" %>
+      <%= link_to "log in", new_user_session_path, class: "MappleButton" %>
+      <%= link_to "sign up", new_user_registration_path, class: "MappleButton" %>
+      <%= link_to "continue as guest", your_guest_path, class: "MappleButton" %>
     <% end %>
   </div>
 </div>
