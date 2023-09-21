@@ -1,11 +1,12 @@
-<div class="container" data-controller="insert-question">
-  <h1><%= @country.name %></h1>
+<div class="d-flex flex-column justify-content-center align-items-center vh-100" data-controller="" data-insert-question-my-value="<%= @questions_content.to_json %>">
+  <h1><%= @country.name.upcase %></h1>
 
-  <p data-insert-question-target="question" data-questions="<% @questions.to_json %>"><%= @questions.first.content %></p>
+  <h4><%= @question %></h4>
 
-  <%= form_with url: mapple_game_path(@mapple_game), method: :get, data: { insert_question_target: "form" } do |f| %>
-    <%= f.text_field :query  %>
-    <%= f.submit %>
+  <%= form_with url: mapple_game_path(@mapple_game), method: :get, data: { insert_question_target: "form", action: "submit->insert-question#next" }, class: 'form-inputs'  do |f| %>
+    <%= f.text_field :query, autocomplete: 'off', placeholder: "Guess a country!", data: { insert_question_target: "input" }%>
+    <%= f.hidden_field :counter, value: @counter %>
+    <%= f.submit 'Guess' %>
   <% end %>
 
   <%= @wrong_answer if @wrong_answer %>

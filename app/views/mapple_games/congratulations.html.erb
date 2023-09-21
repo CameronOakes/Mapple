@@ -1,0 +1,44 @@
+<style>
+
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  h1, h2, p {
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+</style>
+
+<nav>
+</nav>
+
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+  <h1>Congratulations! You have won!</h1>
+  <h2>Facts about Afghanistan</h2>
+  <!-- <%= @guessed_country&.name %> -->
+  <p>Continent: Asia</p>
+  <!-- <%= @guessed_country&.continent %> -->
+  <p>Capital: Kabul</p>
+  <!-- <%= @guessed_country&.capital %> -->
+  <p>Currency: AFN</p>
+  <!-- <%= @guessed_country&.currency %> -->
+</div>

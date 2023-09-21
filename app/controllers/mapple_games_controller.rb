@@ -11,7 +11,7 @@ class MappleGamesController < ApplicationController
     @mapple_game.user = current_user
     @mapple_game.country = Country.all.sample
     if @mapple_game.save
-      redirect_to mapple_game_path(@mapple_game), notice: 'Game has begun'
+      redirect_to mapple_game_path(@mapple_game)
     else
       redirect_to root_path, notice: 'Something went wrong'
     end
@@ -27,8 +27,15 @@ class MappleGamesController < ApplicationController
 
     @guess = params[:query].capitalize if params[:query]
 
-    @questions = @country.questions.sort_by(&:difficulty)
+    if params[:counter].present?
+      @counter = params[:counter].to_i + 1
+    else
+      @counter = 0
+    end
 
+    @questions = @country.questions.sort_by(&:difficulty)
+    @questions_content = @questions.map(&:content)
+    @question = @questions_content[@counter]
     @right_answer = 'Congrats' if @guess == @country.name
     @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
   end
@@ -36,6 +43,11 @@ class MappleGamesController < ApplicationController
   def new
     @mapple_game = MappleGame.new
   end
+
+  def congratulations
+    # @country = Country.find(params[:country_id])
+  end
+
 
   private
 
