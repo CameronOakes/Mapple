@@ -45,7 +45,7 @@ class MappleGamesController < ApplicationController
   end
 
   def congratulations
-    # @country = Country.find(params[:country_id])
+    @country = Country.find(params[:country_id])
   end
 
 

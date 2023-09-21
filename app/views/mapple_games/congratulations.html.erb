@@ -33,12 +33,8 @@
 
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
   <h1>Congratulations! You have won!</h1>
-  <h2>Facts about Afghanistan</h2>
-  <!-- <%= @guessed_country&.name %> -->
-  <p>Continent: Asia</p>
-  <!-- <%= @guessed_country&.continent %> -->
-  <p>Capital: Kabul</p>
-  <!-- <%= @guessed_country&.capital %> -->
-  <p>Currency: AFN</p>
-  <!-- <%= @guessed_country&.currency %> -->
+  <h2>Facts about <%= @guessed_country&.name %></h2>
+  <p>Continent: <%= @guessed_country&.continent %></p>
+  <p>Capital: <%= @guessed_country&.capital %></p>
+  <p>Currency: <%= @guessed_country&.currency %></p>
 </div>
