@@ -20,7 +20,6 @@ class MappleGamesController < ApplicationController
   def show
     @mapple_game = MappleGame.find(params[:id])
     @country = Country.all[0]
-    # TODO: create question logic when seed is filled with questions.
 
     @right_answer = ''
     @wrong_answer = ''
@@ -35,8 +34,9 @@ class MappleGamesController < ApplicationController
 
     @questions = @country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)
-    @question = @questions_content[@counter]
-    @right_answer = 'Congrats' if @guess == @country.name
+    @question = @questions[@counter].content
+
+    redirect_to mapple_games_congratulations_path if @guess == @country.name
     @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
   end
 
@@ -45,9 +45,10 @@ class MappleGamesController < ApplicationController
   end
 
   def congratulations
-    @country = Country.find(params[:country_id])
+    @mapple_game = MappleGame.new
+    @country = @user.mapple_games.last.country
+    @user_game = @user.mapple_games.last
   end
-
 
   private
 

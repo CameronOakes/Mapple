@@ -330,9 +330,9 @@ Question.create!(content: "#{bolivia.capital} are the capitals of which country?
 
 
 
-Country.create!(name: 'England', continent: 'Europe', capital: 'London', currency: 'GBP')
-Country.create!(name: 'France', continent: 'Europe', capital: 'Paris', currency: 'EUR')
-Country.create!(name: 'Wales', continent: 'Europe', capital: 'Cardiff', currency: 'GBP')
-Country.create!(name: 'Scottland', continent: 'Europe', capital: 'Edinburgh', currency: 'GBP')
-Country.create!(name: 'Northern Ireland', continent: 'Europe', capital: 'Belfast', currency: 'GBP')
-Country.create!(name: 'Ireland', continent: 'Europe', capital: 'Dublin', currency: 'EUR')
+# Country.create!(name: 'England', continent: 'Europe', capital: 'London', currency: 'GBP')
+# Country.create!(name: 'France', continent: 'Europe', capital: 'Paris', currency: 'EUR')
+# Country.create!(name: 'Wales', continent: 'Europe', capital: 'Cardiff', currency: 'GBP')
+# Country.create!(name: 'Scottland', continent: 'Europe', capital: 'Edinburgh', currency: 'GBP')
+# Country.create!(name: 'Northern Ireland', continent: 'Europe', capital: 'Belfast', currency: 'GBP')
+# Country.create!(name: 'Ireland', continent: 'Europe', capital: 'Dublin', currency: 'EUR')
