@@ -11,3 +11,24 @@
 @import "components/index";
 @import "pages/index";
 @import 'pages/navbar';
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.user-statistics {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.game-stats {
+  font-size: 16px;
+  line-height: 1.5;
+}
