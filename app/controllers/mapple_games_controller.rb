@@ -45,7 +45,6 @@ class MappleGamesController < ApplicationController
   end
 
   def congratulations
-    # @country = Country.find(params[:country_id])
     @mapple_game = MappleGame.new
     @country = @user.mapple_games.last.country
     @user_game = @user.mapple_games.last
