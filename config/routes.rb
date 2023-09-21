@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root to: "mapple_games#home"
   get 'guest', to: 'pages#guest', as: 'your_guest'
   get 'profile', to: 'users#profile', as: :user_profile
-  get 'mapple_games/congratulations', to: 'mapple_games#congratulations', as: 'mapple_games_congratulations'
 
-  resources :mapple_games
+  resources :mapple_games do
+    get 'congratulations', to: 'mapple_games#congratulations', as: 'mapple_games_congratulations'
+  end
 end
