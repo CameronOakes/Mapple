@@ -19,7 +19,7 @@ class MappleGamesController < ApplicationController
 
   def show
     @mapple_game = MappleGame.find(params[:id])
-    @country = Country.all[0]
+    @country = Country.all.sample
 
     @right_answer = ''
     @wrong_answer = ''

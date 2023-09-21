@@ -17,7 +17,7 @@ html, body {
 
 .vh-100::after {
   content: '';
-  background-image: url('/assets/Mapple.png');
+  background-image: asset-url('Mapple.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
