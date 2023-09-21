@@ -1,4 +1,24 @@
-<div class="user-statistics">
+<style>
+
+  h1, h2, p {
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+</style>
+
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
   <h1>User Statistics</h1>
   <div class="user-info">
     <p><strong>Email:</strong> <%= @user.email %></p>
