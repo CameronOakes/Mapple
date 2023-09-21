@@ -44,6 +44,11 @@ class MappleGamesController < ApplicationController
     @mapple_game = MappleGame.new
   end
 
+  def congratulations
+    # @country = Country.find(params[:country_id])
+  end
+
+
   private
 
   def set_user
