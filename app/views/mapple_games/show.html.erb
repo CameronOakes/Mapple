@@ -1,14 +1,28 @@
 <div class="d-flex flex-column justify-content-center align-items-center vh-100" data-controller="" data-insert-question-my-value="<%= @questions_content.to_json %>">
-  <h1><%= @country.name.upcase %></h1>
 
-  <h4><%= @question %></h4>
+  <div>
+    <h1>
+      <% @country.name.length.times do %>
+        _
+      <% end %>
+    </h1>
+  </div>
 
-  <%= form_with url: mapple_game_path(@mapple_game), method: :get, data: { insert_question_target: "form", action: "submit->insert-question#next" }, class: 'form-inputs'  do |f| %>
-    <%= f.text_field :query, autocomplete: 'off', placeholder: "Guess a country!", data: { insert_question_target: "input" }%>
-    <%= f.hidden_field :counter, value: @counter %>
-    <%= f.submit 'Guess' %>
-  <% end %>
+  <div class="mt-3">
+    <h4 style="max-width: 550px; text-align: center;"><%= @question %></h4>
+  </div>
 
-  <%= @wrong_answer if @wrong_answer %>
+  <div class="mt-3">
+    <%= form_with url: mapple_game_path(@mapple_game), method: :get, data: { insert_question_target: "form", action: "submit->insert-question#next" } do |f| %>
+      <%= f.text_field :query, autocomplete: 'off', placeholder: "Guess a country!", data: { insert_question_target: "input" }, class: "form-control form-rounded" %>
+      <%= f.hidden_field :counter, value: @counter %>
+      <div class="d-flex flex-column justify-content-center align-items-center mt-2">
+        <%= f.submit 'Guess', class: 'MappleButton' %>
+      </div>
+    <% end %>
+  </div>
+
+  <% @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @country.name %>
+  <% @mapple_game.save %>
   <%= @right_answer if @right_answer %>
 </div>
