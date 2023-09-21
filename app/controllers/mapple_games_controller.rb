@@ -1,5 +1,5 @@
 class MappleGamesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, :country_count
 
   def home
     @mapple_game = MappleGame.new
@@ -9,7 +9,7 @@ class MappleGamesController < ApplicationController
     @mapple_game = MappleGame.new
     @mapple_game.score = 10000
     @mapple_game.user = current_user
-    @mapple_game.country = Country.all.sample
+    @mapple_game.country = Country.all[8]
     if @mapple_game.save
       redirect_to mapple_game_path(@mapple_game)
     else
@@ -19,7 +19,7 @@ class MappleGamesController < ApplicationController
 
   def show
     @mapple_game = MappleGame.find(params[:id])
-    @country = Country.all.sample
+    @country = Country.all[8]
 
     @right_answer = ''
     @wrong_answer = ''
@@ -36,7 +36,9 @@ class MappleGamesController < ApplicationController
     @questions_content = @questions.map(&:content)
     @question = @questions[@counter].content
 
-    redirect_to mapple_games_congratulations_path if @guess == @country.name
+    if @mapple_game.save
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @country.name
+    end
     @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
   end
 
@@ -45,14 +47,19 @@ class MappleGamesController < ApplicationController
   end
 
   def congratulations
-    @mapple_game = MappleGame.new
-    @country = @user.mapple_games.last.country
+    @country = MappleGame.find(params[:mapple_game_id]).country
     @user_game = @user.mapple_games.last
+    @mapple_game = MappleGame.new
+    @country_count += 1
   end
 
   private
 
   def set_user
     @user = User.find(current_user.id)
+  end
+
+  def country_count
+    @country_count = 0
   end
 end
