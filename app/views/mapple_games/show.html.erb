@@ -2,7 +2,7 @@
 
   <div>
     <h1>
-      <% @country.name.length.times do %>
+      <% @mapple_game.country.name.length.times do %>
         _
       <% end %>
     </h1>
@@ -22,7 +22,7 @@
     <% end %>
   </div>
 
-  <% @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @country.name %>
+  <% @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @mapple_game.country.name %>
   <% @mapple_game.save %>
   <%= @right_answer if @right_answer %>
 </div>
