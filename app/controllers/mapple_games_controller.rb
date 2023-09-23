@@ -36,18 +36,24 @@ class MappleGamesController < ApplicationController
 
     @questions = @country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)
-    @question = @questions[@counter].content
 
-    if @guess && @guess != @country.name
-      @mapple_game.guesses ||= 0
-      @mapple_game.guesses += 1
-      @mapple_game.save
+    if @counter >= 10
+      redirect_to you_lose_path(country_id: @country.id)
+    else
+      @question = @questions[@counter].content
+
+      if @guess && @guess != @country.name
+        @mapple_game.guesses ||= 0
+        @mapple_game.guesses += 1
+        @mapple_game.save
+      end
+
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @country.name
+
+      @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
     end
-
-    redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @country.name
-
-    @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
   end
+
 
   def new
     @mapple_game = MappleGame.new
@@ -59,6 +65,15 @@ class MappleGamesController < ApplicationController
     @mapple_game = MappleGame.new
     @country_count += 1
   end
+
+  def you_lose
+    @country_id = params[:country_id]
+    @user_game = @user.mapple_games.last
+    @mapple_game = MappleGame.new
+  end
+
+
+
 
   private
 
