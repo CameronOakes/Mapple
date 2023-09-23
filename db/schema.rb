@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_234216) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_093646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,12 +33,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_234216) do
     t.index ["question_id"], name: "index_game_questions_on_question_id"
   end
 
+  create_table "installs", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_installs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
+  end
+
   create_table "mapple_games", force: :cascade do |t|
     t.integer "score"
     t.bigint "user_id", null: false
     t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "turns_to_correct_answer"
+    t.integer "guesses"
     t.index ["country_id"], name: "index_mapple_games_on_country_id"
     t.index ["user_id"], name: "index_mapple_games_on_user_id"
   end

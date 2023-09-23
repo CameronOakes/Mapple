@@ -10,6 +10,8 @@ class MappleGamesController < ApplicationController
     @mapple_game.score = 10000
     @mapple_game.user = current_user
     @mapple_game.country = Country.all[9]
+    @mapple_game.guesses = 0
+
     if @mapple_game.save
       redirect_to mapple_game_path(@mapple_game)
     else
@@ -35,6 +37,12 @@ class MappleGamesController < ApplicationController
     @questions = @country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)
     @question = @questions[@counter].content
+
+    if @guess && @guess != @country.name
+      @mapple_game.guesses ||= 0
+      @mapple_game.guesses += 1
+      @mapple_game.save
+    end
 
     redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @country.name
 

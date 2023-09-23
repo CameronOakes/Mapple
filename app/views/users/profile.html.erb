@@ -1,32 +1,64 @@
-<style>
-
-  h1, h2, p {
-    text-align: center;
-    margin: 8px 0;
-  }
-
-  h1 {
-    font-size: 48px;
-  }
-
-  h2 {
-    font-size: 36px;
-  }
-
-  p {
-    font-size: 24px;
-  }
-</style>
-
-<div class="d-flex flex-column justify-content-center align-items-center vh-100">
-  <h1>User Statistics</h1>
-  <div class="user-info">
-    <p><strong>Email:</strong> <%= @user.email %></p>
-  </div>
-  <div class="game-stats">
-    <p><strong>Total Games Played:</strong> <%= @total_games_played %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1, h2, p {
+      text-align: center;
+      margin: 8px 0;
+    }
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 24px;
+    }
+    .profile-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .user-info {
+      flex: 1;
+      margin-right: 20px;
+    }
+    .game-stats {
+      flex: 2;
+    }
+    .game-history {
+      list-style: none;
+      padding: 0;
+    }
+    .game-history li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="user-info">
+      <h1>User Statistics</h1>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Total Games Played:</strong> <%= @total_games_played %></p>
     <!-- <p><strong>Games Won:</strong> <%= @games_won %></p> -->
     <p><strong>Average Score:</strong> <%= @average_score %></p>
     <p><strong>Total Score:</strong> <%= @total_score %></p>
+    </div>
+    <div class="game-stats">
+      <h1>Last 10 Games</h1>
+      <ul class="game-history">
+        <% @user.mapple_games.order(created_at: :desc).limit(10).each do |game| %>
+          <li>
+            <p><strong>Score:</strong> <%= game.score %></p>
+            <p><strong>Date:</strong> <%= game.created_at.strftime("%d/%m/%Y") %></p>
+            <p><strong>Guessed Country:</strong> <%= game.country.name %></p>
+            <p><strong>Guesses:</strong> <%= game.guesses %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
+</body>
+</html>

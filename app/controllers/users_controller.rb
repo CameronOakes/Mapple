@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @total_games_played = calculate_total_games_played(@user)
-    # @games_won = calculate_games_won(@user)
     @average_score = calculate_average_score(@user)
     @total_score = calculate_total_score(@user)
+    @last_10_games = @user.mapple_games.where.not(guesses: nil).order(created_at: :desc).limit(10)
   end
+
 
   private
 
