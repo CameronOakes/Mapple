@@ -20,7 +20,7 @@
 
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
   <h1>You lose!</h1>
-  <h1>You scored 0 points</h1>
+  <h1>You scored <%= @user_game.score %></h1>
   <% if @country_id %>
     <% @country = Country.find_by(id: @country_id) %>
     <h2>The daily country was <%= @country.name %></h2>
