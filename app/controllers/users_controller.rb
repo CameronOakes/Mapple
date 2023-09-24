@@ -17,8 +17,11 @@ class UsersController < ApplicationController
   end
 
   def calculate_games_won(user)
-    user.mapple_games.where(won: true).count
+    won_games = user.mapple_games.where(won: true)
+    puts "Games Won Count: #{won_games.count}"
+    won_games.count
   end
+
 
   def calculate_average_score(user)
     total_score = user.mapple_games.sum(:score)
