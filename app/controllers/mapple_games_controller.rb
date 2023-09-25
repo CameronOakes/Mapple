@@ -37,13 +37,13 @@ class MappleGamesController < ApplicationController
     @questions_content = @questions.map(&:content)
 
     if @counter >= 10
-      redirect_to you_lose_path(country_id: @country.id)
+      redirect_to you_lose_path(country_id: @mapple_game.country.id)
     else
       @question = @questions[@counter].content
 
-      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @country.name
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country
 
-      @wrong_answer = 'Sorry try again' if @guess && @guess != @country.name
+      @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country
     end
 
   end
