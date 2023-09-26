@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import InsertQuestionController from "./insert_question_controller"
 application.register("insert-question", InsertQuestionController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)

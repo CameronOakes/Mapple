@@ -2,8 +2,13 @@
 
   <div>
     <h1>
-      <% @mapple_game.country.name.length.times do %>
-        _
+      <% split = @mapple_game.country.name.split('') %>
+      <% split.each_with_index do |letter, i| %>
+        <% if i + 4 < @counter %>
+          <%= "#{letter}" %>
+        <% else %>
+          <%= "_" %>
+        <% end %>
       <% end %>
     </h1>
   </div>
