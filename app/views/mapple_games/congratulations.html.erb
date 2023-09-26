@@ -16,12 +16,29 @@
   p {
     font-size: 24px;
   }
+
+  #fly {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #ee8a65;
+  }
 </style>
 
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
-  <h1>Congratulations!</h1>
-  <%= @user_game.guess_count %>
   <h1>You scored <%= @user_game.score %></h1>
+  <div data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>" id="map" style='width: 800px; height: 400px;'>
+  </div>
+
+  <h1>with <%= @user_game.guess_count %> guesses!</h1>
   <h2>The daily country was <%= @country.name %></h2>
 
   <p><%= @country.name %> is located in <strong><%= @country.continent %></strong></p>

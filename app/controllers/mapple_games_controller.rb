@@ -7,7 +7,7 @@ class MappleGamesController < ApplicationController
 
   def create
     @mapple_game = MappleGame.new
-    @mapple_game.score = 10000
+    @mapple_game.score = 5000
     @mapple_game.user = current_user
     @mapple_game.country = Country.all.sample
 
@@ -20,10 +20,7 @@ class MappleGamesController < ApplicationController
 
   def show
     @mapple_game = MappleGame.find(params[:id])
-
-    @right_answer = ''
     @wrong_answer = ''
-
     @guess = params[:query].capitalize if params[:query]
 
     if params[:counter].present?
@@ -40,14 +37,10 @@ class MappleGamesController < ApplicationController
       redirect_to you_lose_path(country_id: @mapple_game.country.id)
     else
       @question = @questions[@counter].content
-
-      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country
-
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country.name
       @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country
     end
-
   end
-
 
   def new
     @mapple_game = MappleGame.new
@@ -58,6 +51,12 @@ class MappleGamesController < ApplicationController
     @user_game = MappleGame.find(params[:mapple_game_id])
     @mapple_game = MappleGame.new
     @country_count += 1
+    @markers = [
+      {
+        lat: @country.latitude,
+        lng: @country.longitude
+      }
+    ]
   end
 
   def you_lose
