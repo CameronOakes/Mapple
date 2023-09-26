@@ -41,7 +41,7 @@ class MappleGamesController < ApplicationController
     else
       @question = @questions[@counter].content
 
-      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country.name
 
       @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country
     end

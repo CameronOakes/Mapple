@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your High Score Page</title>
+  <style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .left-column,
+  .right-column {
+    width: 48%;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+</style>
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="left-column">
+    <h2>Your Last Game's Score: <%= @user_score %></h2>
+    <% if @user_last_game %>
+      <div class="completed-message">
+        <p>I completed Mapple in <%= @user_last_game.guess_count %> guesses with a score of <%= @user_last_game.score %></p>
+        <button onclick="copyCompletedMessage()" class="MappleButton">Copy</button>
+      </div>
+    <% end %>
+  </div>
+  <div class="right-column">
+    <h2>Top Scores Today</h2>
+    <ul>
+      <% @top_users.each do |user_score| %>
+        <li><%= user_score.username %>: <%= user_score.total_score %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<% if @country_image_url.present? %>
+  <div class="image">
+    <img src="<%= @country_image_url %>" alt="Country Image">
+  </div>
+<% end %>
+
+<script>
+  function copyCompletedMessage() {
+    const messageElement = document.querySelector('.completed-message');
+    const messageText = messageElement.textContent;
+    const textArea = document.createElement('textarea');
+    textArea.value = messageText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('Message copied to clipboard: ' + messageText);
+  }
+</script>
+</body>
+</html>
