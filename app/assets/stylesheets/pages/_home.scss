@@ -6,7 +6,7 @@ html, body {
 }
 
 .vh-100, .MappleLogin {
-  background: linear-gradient(to bottom, #c5cbe47f, #f48d8b7f);
+  background: linear-gradient(to bottom, #c5cbe47f, #f48d8b25);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,17 @@ h1 {
    0.5px  0.5px 0 #333;
 }
 
+h3 {
+  font-family: 'Comfortaa';
+  font-size: 20px;
+  color: #5383b1;
+}
+
+h5 {
+  font-family: 'Comfortaa';
+  font-size: 15px;
+  color: #5383b1;
+}
 .MappleButton {
   font-family: 'Comfortaa';
   font-size: 15px;
@@ -63,7 +74,7 @@ h1 {
 }
 
 .MappleButton:hover {
-  background-color: #c5cbe4;
+  background-color: #d8d2e3;
   color: #5383b1;
   border-color: #5383b1;
   text-decoration: none;
@@ -71,6 +82,66 @@ h1 {
 }
 
 .MappleButton:active {
+  background-color: #f48c8b;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.MappleGuess {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #5383b1;
+  border-radius: 25px;
+  background-color: #d8d2e3;
+  color: #fff !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: center;
+}
+
+.MappleGuess:hover {
+  background-color: #c5cbe4;
+  border-color: #5383b1;
+  color: #5383b1;
+}
+
+.MappleGuess:focus {
+  outline: none;
+  background-color: #c5cbe4;
+  border-color: #5383b1;
+  color: transparent;
+}
+
+.MappleGuessButton {
+  font-family: 'Comfortaa';
+  font-size: 15px;
+  text-align: center;
+  width: 125px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5383b1;
+  background-color: #d8d2e3;
+  color: #5383b1;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, font-size 0.25s ease;
+  text-decoration: none;
+}
+
+.MappleGuessButton:hover {
+  background-color: #c7e4d7;
+  color: #fff;
+  border-color: #5383b1;
+  text-decoration: none;
+  font-size: 18.75px;
+}
+
+.MappleGuessButton:active {
   background-color: #f48c8b;
   color: #fff;
   text-decoration: none;
