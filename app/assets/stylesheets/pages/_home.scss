@@ -33,14 +33,14 @@ html, body {
 
 h1 {
   font-family: 'Comfortaa';
-  font-size: 50px;
+  font-size: 75px;
   color: #e45d62;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   text-shadow:
-  -0.5px -0.5px 0 #333,
-   0.5px -0.5px 0 #333,
-  -0.5px  0.5px 0 #333,
-   0.5px  0.5px 0 #333;
+  -0.5px -0.5px 0 #5383b1,
+   0.5px -0.5px 0 #5383b1,
+  -0.5px  0.5px 0 #5383b1,
+   0.5px  0.5px 0 #5383b1;
 }
 
 h3 {
@@ -74,11 +74,10 @@ h5 {
 }
 
 .MappleButton:hover {
-  background-color: #d8d2e3;
+  background-color: #c7e4d7;
   color: #5383b1;
   border-color: #5383b1;
   text-decoration: none;
-  font-size: 18.75px;
 }
 
 .MappleButton:active {
@@ -95,7 +94,7 @@ h5 {
   border: 1px solid #5383b1;
   border-radius: 25px;
   background-color: #d8d2e3;
-  color: #fff !important;
+  color: #5383b1 !important;
   transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
   font-family: 'Comfortaa', sans-serif;
   text-align: center;
@@ -138,7 +137,6 @@ h5 {
   color: #fff;
   border-color: #5383b1;
   text-decoration: none;
-  font-size: 18.75px;
 }
 
 .MappleGuessButton:active {
@@ -286,7 +284,6 @@ h5 {
   color: #5383b1;
   border-color: #5383b1;
   text-decoration: none;
-  font-size: 18.75px;
 }
 
 .MappleLoginButton .MappleLoginButton:active {
@@ -324,4 +321,42 @@ h5 {
   font-family: 'Comfortaa', sans-serif !important;
   font-size: 15px !important;
   overflow: hidden;
+}
+
+.MappleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  padding: 30px 25px 25px;
+  background-color: #c5cbe47f;
+  border-radius: 50px;
+  border: 1px solid #c5cbe4;
+  overflow: auto;
+}
+
+.MappleContainer2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  padding: 20px;
+  background-color: #c5cbe47f;
+  border-radius: 50px;
+  border: 1px solid #c5cbe4;
+  overflow: auto;
+}
+
+.MappleContainer3 {
+flex: 1;
+height: 350px;
+width: 350px;
+align-items: center;
+justify-content: center;
+padding: 20px;
+background-color: rgba(250,250,250,0.50);
+border-radius: 25px;
+margin: 5px;
+border: 1px solid #5383b1;
 }
