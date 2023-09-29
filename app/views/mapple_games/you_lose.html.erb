@@ -1,36 +1,62 @@
 <style>
 
-  h1, h2, p {
-    text-align: center;
-    margin: 8px 0;
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
 
+  h1, h2, p {
+    font-family: "Comfortaa";
+    text-align: center;
+    margin: 10px 0;
+  }
+
+
   h1 {
-    font-size: 48px;
+    font-size: 50px;
   }
 
   h2 {
-    font-size: 36px;
+    font-size: 25px;
+    color: #c5cbe4;
   }
 
   p {
-    font-size: 24px;
+    font-size: 15px;
+    color: #939ad2;
+  }
+
+  .centered {
+    margin: 0;
+    text-align: center;
   }
 </style>
-
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
-  <h1>You lose!</h1>
-  <h1>You scored <%= @user_game.score %></h1>
+
+  <div id="map" style='width: 400px; height: 300px;'>
+
+
+  </div>
+  <div class="MappleContainer2">
   <% if @country_id %>
     <% @country = Country.find_by(id: @country_id) %>
-    <h2>The daily country was <%= @country.name %></h2>
-    <p><%= @country.name %> is located in <strong><%= @country.continent %></strong></p>
-    <p>The capital of <%= @country.name %> is <strong><%= @country.capital %></strong></p>
+    <h3>the daily country was</h3>
+    <h1><%= @country.name.upcase %></h1>
+    <h3>you lose!</h3>
+    <h3>you scored <%= @user_game.score %></h3>
+    <div class="MappleContainer3">
+    <p><%= @country.name %> is located in </p>
+    <h3 class="centered"><%= @country.continent.upcase %></h3>
+    <p>the capital of <%= @country.name.upcase %> is</p>
+    <h3 class="centered"><%= @country.capital.upcase %></h3>
+    </div>
   <% end %>
-
-  <div class="mt-3">
+   <div class="mt-3">
     <%= simple_form_for @mapple_game do |f| %>
       <%= f.submit "play again?", class: "MappleButton" %>
     <% end %>
+  </div>
   </div>
 </div>

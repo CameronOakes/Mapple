@@ -1,9 +1,11 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
+import "bootstrap"
+
+document.addEventListener('turbo:load',() => {
 
 // LOG-IN: Makes the "Remember Me Checkbox" into a styled text that changes when clicked.
-document.addEventListener('DOMContentLoaded', function() {
   const rememberMeCheckbox = document.querySelector('#user_remember_me');
 
   if (rememberMeCheckbox) {
@@ -17,10 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
 
 // HOMEPAGE: Makes it so the dropdown menu will close if you click anywhere on the screen and the animation will reset the dropdown.
-document.addEventListener("DOMContentLoaded", function () {
   const logo = document.querySelector(".MappleLogo");
   const dropdownMenu = document.querySelector(".dropdown-menu");
   const navbar = document.querySelector(".navbar");
@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     isClicked = !isClicked;
-  });
 
   document.body.addEventListener("click", function (event) {
     if (
@@ -53,3 +52,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+})

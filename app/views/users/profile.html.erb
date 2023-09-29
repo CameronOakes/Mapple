@@ -1,64 +1,113 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <style>
-    h1, h2, p {
-      text-align: center;
-      margin: 8px 0;
-    }
-    h1 {
-      font-size: 48px;
-    }
-    h2 {
-      font-size: 36px;
-    }
-    p {
-      font-size: 24px;
-    }
-    .profile-container {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-    }
-    .user-info {
-      flex: 1;
-      margin-right: 20px;
-    }
-    .game-stats {
-      flex: 2;
-    }
-    .game-history {
-      list-style: none;
-      padding: 0;
-    }
-    .game-history li {
-      margin-bottom: 10px;
-    }
-  </style>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            background: linear-gradient(to bottom, #c5cbe47f, #f48d8b25);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #c5cbe47f;
+            border-radius: 50px;
+             border: 1px solid #c5cbe4;
+        }
+
+        h1 {
+            font-family: 'Comfortaa';
+            font-size: 50px;
+            color: #e45d62;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: -0.5px -0.5px 0 #333, 0.5px -0.5px 0 #333, -0.5px 0.5px 0 #333, 0.5px 0.5px 0 #333;
+        }
+
+        h5 {
+          text-align: center;
+        }
+
+        p {
+            font-size: 15px;
+            font-family: 'Comfortaa';
+            text-align: center;
+            color: #c5cbe4;
+        }
+
+        .user-info, .game-stats {
+            flex: 1;
+            height: 400px;
+            width: 650px;
+            padding: 20px;
+            background-color: rgba(250,250,250,0.50);
+            border-radius: 25px;
+            margin: 5px;
+             border: 1px solid #5383b1;
+        }
+
+        .game-stats {
+            flex: 1;
+        }
+
+        .game-history {
+            list-style: none;
+            padding: 0;
+            max-height: 235px;
+            overflow-y: auto;
+        }
+
+        .game-history li {
+          margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="profile-container">
-    <div class="user-info">
-      <h1>User Statistics</h1>
-        <p><strong>Email:</strong> <%= @user.email %></p>
-        <p><strong>Total Games Played:</strong> <%= @total_games_played %></p>
-        <!-- <p><strong>Games Won:</strong> <%= @games_won %></p> -->
-        <p><strong>Average Score:</strong> <%= @average_score %></p>
-        <p><strong>Total Score:</strong> <%= @total_score %></p>
+    <div class="profile-container">
+        <div class="profile-content">
+            <div class="user-info">
+                <h1>statistics</h1>
+                <h5>email:</h5>
+                <p> <%= @user.email %></p>
+                <h5>total games played:</h5>
+                <p><%= @total_games_played %></p>
+                <h5>average score:</h5>
+                <p><%= @average_score %></p>
+                <h5>total score:</h5>
+                <p><%= @total_score %></p>
+            </div>
+            <div class="game-stats">
+                <h1>last 10</h1>
+                <ul class="game-history">
+                    <% @user.mapple_games.order(created_at: :desc).limit(10).each do |game| %>
+                    <li>
+                        <h5>score:</h5><p> <%= game.score %></p>
+                        <h5>date:</h5><p> <%= game.created_at.strftime("%d/%m/%Y") %></p>
+                        <h5>guessed country:</h5><p> <%= game.country.name %></p>
+                        <h5>total guesses:</h5><p> <%= game.guess_count %></p>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="game-stats">
-      <h1>Last 10 Games</h1>
-      <ul class="game-history">
-        <% @user.mapple_games.order(created_at: :desc).limit(10).each do |game| %>
-          <li>
-            <p><strong>Score:</strong> <%= game.score %></p>
-            <p><strong>Date:</strong> <%= game.created_at.strftime("%d/%m/%Y") %></p>
-            <p><strong>Guessed Country:</strong> <%= game.country.name %></p>
-            <p><strong>Guesses:</strong> <%= game.guess_count %></p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
 </body>
+
 </html>
