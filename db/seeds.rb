@@ -121,7 +121,7 @@ Question.create!(content: 'Chess is the national sport of which Central Asian co
 Question.create!(content: 'Which country would you find the longest non-stop double track cable car, the Tatev Aerial Tramway, which is 5,752m (18,871ft) long?', difficulty: 300, country: armenia)
 Question.create!(content: 'Where would you find the oldest winery on the planet, found in a cave near the village of Areni and is 6100 years old?', difficulty: 300, country: armenia)
 Question.create!(content: 'The dram (AMD) is the currency of which country?', difficulty: 400, country: armenia)
-Question.create!(content: 'Armenian is the capital of which country?', difficulty: 400, country: armenia)
+Question.create!(content: 'Armenian is the official language of which country?', difficulty: 400, country: armenia)
 Question.create!(content: 'Yerevan is the capital of which country?', difficulty: 400, country: armenia)
 
 # Australia

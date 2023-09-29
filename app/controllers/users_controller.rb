@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+
   def profile
     @user = current_user
     @total_games_played = calculate_total_games_played(@user)
@@ -15,7 +16,16 @@ class UsersController < ApplicationController
     @top_users = calculate_top_users_for_today
     @user_score = calculate_last_game_score(@user)
     @user_last_game = @user.mapple_games.where.not(score: nil).order(created_at: :desc).first
-    @country_image_url = nil # Initialize the URL to nil
+    @country_image_url = nil
+    @country_image_url_one = nil
+    @country_image_url_two = nil
+    @country_image_url_three = nil
+    @country_image_url_four = nil
+    @country_image_url_five = nil
+    @country_image_url_six = nil
+    @country_image_url_seven = nil
+    @country_image_url_eight = nil
+    @country_image_url_nine = nil
 
     if @user_last_game && @user_last_game.country
       begin
@@ -30,19 +40,65 @@ class UsersController < ApplicationController
           data = JSON.parse(response.body)
           if data['results'].any?
             @country_image_url = data['results'][0]['urls']['regular']
+            @country_image_url_one = data['results'][1]['urls']['regular'] if data['results'].size >= 2
+            @country_image_url_two = data['results'][2]['urls']['regular'] if data['results'].size >= 3
+            @country_image_url_three = data['results'][3]['urls']['regular'] if data['results'].size >= 4
+            @country_image_url_four = data['results'][4]['urls']['regular'] if data['results'].size >= 5
+            @country_image_url_five = data['results'][5]['urls']['regular'] if data['results'].size >= 6
+            @country_image_url_six = data['results'][6]['urls']['regular'] if data['results'].size >= 7
+            @country_image_url_seven = data['results'][7]['urls']['regular'] if data['results'].size >= 8
+            @country_image_url_eight = data['results'][8]['urls']['regular'] if data['results'].size >= 9
+            @country_image_url_nine = data['results'][9]['urls']['regular'] if data['results'].size >= 10
           else
             @country_image_url = nil
+            @country_image_url_one = nil
+            @country_image_url_two = nil
+            @country_image_url_three = nil
+            @country_image_url_four = nil
+            @country_image_url_five = nil
+            @country_image_url_six = nil
+            @country_image_url_seven = nil
+            @country_image_url_eight = nil
+            @country_image_url_nine = nil
           end
         else
           @country_image_url = nil
+          @country_image_url_one = nil
+          @country_image_url_two = nil
+          @country_image_url_three = nil
+          @country_image_url_four = nil
+          @country_image_url_five = nil
+          @country_image_url_six = nil
+          @country_image_url_seven = nil
+          @country_image_url_eight = nil
+          @country_image_url_nine = nil
         end
       rescue RestClient::ExceptionWithResponse => e
         @country_image_url = nil
+        @country_image_url_one = nil
+        @country_image_url_two = nil
+        @country_image_url_three = nil
+        @country_image_url_four = nil
+        @country_image_url_five = nil
+        @country_image_url_six = nil
+        @country_image_url_seven = nil
+        @country_image_url_eight = nil
+        @country_image_url_nine = nil
         puts "Error fetching country image: #{e.message}"
       end
     else
       @country_image_url = nil
+      @country_image_url_one = nil
+      @country_image_url_two = nil
+      @country_image_url_three = nil
+      @country_image_url_four = nil
+      @country_image_url_five = nil
+      @country_image_url_six = nil
+      @country_image_url_seven = nil
+      @country_image_url_eight = nil
+      @country_image_url_nine = nil
     end
+
 
     respond_to do |format|
       format.html
@@ -50,18 +106,20 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show_country_images
     @user = current_user
     @user_last_game = @user.mapple_games.where.not(score: nil).order(created_at: :desc).first
 
     if @user_last_game && @user_last_game.country.present?
       @country_name = @user_last_game.country.name
-      @country_images = fetch_country_images(@country_name)
+      @country_images = fetch_country_images(@country_name).first(10)
     else
       @country_name = 'Unknown'
       @country_images = []
     end
   end
+
 
   private
 
@@ -101,7 +159,7 @@ class UsersController < ApplicationController
   def calculate_top_users_for_today
     top_users = User.joins(:mapple_games)
                     .where("mapple_games.created_at >= ?", Date.today.beginning_of_day)
-                    .group('users.id')
+                    .group('users.id, users.username')
                     .select('users.id, users.username, SUM(mapple_games.score) as total_score')
                     .order('total_score DESC')
                     .limit(10)
