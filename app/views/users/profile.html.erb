@@ -23,7 +23,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            max-width: 800px;
+            max-width: 1500px;
             width: 100%;
             padding: 20px;
             background-color: #c5cbe47f;
@@ -76,6 +76,13 @@
         .game-history li {
           margin-bottom: 10px;
         }
+
+.MappleScroll {
+    float: right;
+    margin-right: 25px; /* Adjust the margin as needed */
+    cursor: pointer;
+}
+
     </style>
 </head>
 
@@ -105,9 +112,11 @@
                     </li>
                     <% end %>
                 </ul>
+                <div class="MappleScroll" id="scrollDownArrow">
+                    <%= image_tag asset_url('Mapple_Arrow.png'), alt: 'Scroll Down', width: 20, height: 20 %>
+                </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
