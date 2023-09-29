@@ -33,13 +33,36 @@ class MappleGamesController < ApplicationController
     @questions = @mapple_game.country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)
 
+    if @counter == 8
+      @flag_image_url = fetch_flag_image(@mapple_game.country.name)
+    end
+
     if @counter >= 10
       redirect_to you_lose_path(country_id: @mapple_game.country.id)
     else
       @question = @questions[@counter].content
+
       redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country.name
+
       @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country
     end
+  end
+
+
+  def fetch_flag_image(country_name)
+    begin
+      response = RestClient.get("https://restcountries.com/v3.1/name/#{URI.encode_www_form_component(country_name)}")
+
+      if response.code == 200
+        data = JSON.parse(response.body)
+        flag_url = data[0]['flags']['png']
+        return flag_url if flag_url.present?
+      end
+    rescue RestClient::ExceptionWithResponse => e
+      puts "Error fetching flag image: #{e.message}"
+    end
+
+    return nil
   end
 
   def new
