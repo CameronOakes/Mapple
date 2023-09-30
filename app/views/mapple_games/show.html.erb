@@ -10,6 +10,7 @@
       <% split.each_with_index do |letter, i| %>
         <% if i + 2 < @counter && i == randnum %>
           <% session[:country_letters][i] = letter %>
+        <% end %>
       <% end %>
       <%= session[:country_letters].join(' ') %>
     </h1>
