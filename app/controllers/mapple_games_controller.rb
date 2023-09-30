@@ -2,6 +2,7 @@ class MappleGamesController < ApplicationController
   before_action :set_user, :country_count
 
   def home
+    session.delete(:country_letters)
     @mapple_game = MappleGame.new
   end
 
@@ -22,8 +23,9 @@ class MappleGamesController < ApplicationController
     @mapple_game = MappleGame.find(params[:id])
     @wrong_answer = ''
     @guess = params[:query].capitalize if params[:query]
+    @country_names = Country.pluck(:name)
 
-    if params[:counter].present?
+    if params[:counter].present? && params[:counter].to_i < 11
       @counter = params[:counter].to_i + 1
       @mapple_game.guess_count = @counter + 1
     else
@@ -33,12 +35,18 @@ class MappleGamesController < ApplicationController
     @questions = @mapple_game.country.questions.sort_by(&:difficulty)
     @questions_content = @questions.map(&:content)
 
-    if @counter >= 10
+    if params[:counter].to_i < 9
+      @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @mapple_game.country.name && @questions[@counter]
+      @mapple_game.save
+    end
+
+    @question = @questions[@counter].content if @counter < 10
+
+    if @guess == @mapple_game.country.name.capitalize
+      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game)
+    elsif params[:counter].to_i > 8
       redirect_to you_lose_path(country_id: @mapple_game.country.id)
-    else
-      @question = @questions[@counter].content
-      redirect_to mapple_game_mapple_games_congratulations_path(@mapple_game) if @guess == @mapple_game.country.name
-      @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country
+      # @wrong_answer = 'Sorry try again' if @guess && @guess != @mapple_game.country.name.capitalize
     end
   end
 
@@ -57,12 +65,14 @@ class MappleGamesController < ApplicationController
         lng: @country.longitude
       }
     ]
+    session.delete(:country_letters)
   end
 
   def you_lose
     @country_id = params[:country_id]
     @user_game = @user.mapple_games.last
     @mapple_game = MappleGame.new
+    session.delete(:country_letters)
   end
 
   private

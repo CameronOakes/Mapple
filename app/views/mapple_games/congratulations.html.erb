@@ -38,7 +38,7 @@
   <div data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>" id="map" style='width: 800px; height: 400px;'>
   </div>
 
-  <h1>with <%= @user_game.guess_count %> guesses!</h1>
+  <h1>with <%= @user_game.guess_count - 1 %> guesses!</h1>
   <h2>The daily country was <%= @country.name %></h2>
 
   <p><%= @country.name %> is located in <strong><%= @country.continent %></strong></p>
