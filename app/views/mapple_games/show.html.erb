@@ -10,23 +10,35 @@
       <% split.each_with_index do |letter, i| %>
         <% if i + 2 < @counter && i == randnum %>
           <% session[:country_letters][i] = letter %>
-        <% end %>
       <% end %>
       <%= session[:country_letters].join(' ') %>
     </h1>
   </div>
 
-  <div class="mt-3">
-    <h4 style="max-width: 550px; text-align: center;"><%= @question %></h4>
+  <div class="MappleContainer">
+    <h3><%= @question %></h5>
   </div>
 
   <div class="mt-3">
     <%= form_with url: mapple_game_path(@mapple_game), method: :get do |f| %>
-      <%= f.text_field :query, autocomplete: 'off', collection: @country_names, placeholder: "Guess a country!", input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, class: "form-control form-rounded", autofocus: true %>
+      <%= f.text_field :query, autocomplete: 'off', placeholder: "guess a country!", data: { insert_question_target: "input" }, class: "MappleGuess", autofocus: true %>
       <%= f.hidden_field :counter, value: @counter %>
       <div class="d-flex flex-column justify-content-center align-items-center mt-2">
-        <%= f.submit 'Guess', class: 'MappleButton' %>
+        <%= f.submit 'guess', class: 'MappleGuessButton' %>
       </div>
     <% end %>
   </div>
+
+  <% if @flag_image_url.present? %>
+   <div class="mt-3" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+     <p style="margin-bottom: 10px;"><strong>Hint:</strong></p>
+     <img src="<%= @flag_image_url %>" alt="Flag Image" style="max-width: 300px; height: auto;">
+   </div>
+  <% end %>
+
+
+  <% @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @mapple_game.country.name %>
+  <% @mapple_game.save %>
+  <%= @right_answer if @right_answer %>
+
 </div>
