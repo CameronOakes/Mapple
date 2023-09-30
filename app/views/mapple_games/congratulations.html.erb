@@ -60,12 +60,14 @@
     <h1>you scored <%= @user_game.score %></h1>
     <h3 class="centered">with <%= @user_game.guess_count %> guesses!</h3>
   </div>
+
   <div class="MappleContainer3">
   <p><%= @country.name.upcase %> is located in </p>
   <h3 class="centered"><%= @country.continent.upcase %></strong></h3>
   <p>the capital of <%= @country.name.upcase %> is </p>
   <h3 class="centered"><%= @country.capital.upcase %></h3>
 </div>
+
   <div class="mt-3">
     <%= simple_form_for @mapple_game do |f| %>
       <%= f.submit "play again?", class: "MappleButton" %>
