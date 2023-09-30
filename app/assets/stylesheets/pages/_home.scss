@@ -35,7 +35,7 @@ h1 {
   font-family: 'Comfortaa';
   font-size: 75px;
   color: #e45d62;
-  margin-bottom: 0px;
+  margin-bottom: 25px;
   text-shadow:
   -0.5px -0.5px 0 #5383b1,
    0.5px -0.5px 0 #5383b1,
@@ -340,7 +340,7 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 750px;
   padding: 20px;
   background-color: #c5cbe47f;
   border-radius: 50px;
@@ -350,8 +350,8 @@ h5 {
 
 .MappleContainer3 {
 flex: 1;
-height: 350px;
-width: 350px;
+height: 250px;
+width: 500px;
 align-items: center;
 justify-content: center;
 padding: 20px;
@@ -359,4 +359,14 @@ background-color: rgba(250,250,250,0.50);
 border-radius: 25px;
 margin: 5px;
 border: 1px solid #5383b1;
+}
+
+.MappleBox {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #e45d627f;
+  border: 1px solid #5383b1;
+  margin-right: 5px;
+  vertical-align: middle;
 }
