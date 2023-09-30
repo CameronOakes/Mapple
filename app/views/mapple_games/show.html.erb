@@ -12,7 +12,14 @@
           <% session[:country_letters][i] = letter %>
         <% end %>
       <% end %>
-      <%= session[:country_letters].join(' ') %>
+
+      <% session[:country_letters].each do |item| %>
+        <% if item == '_' %>
+          <span class="MappleBox"></span>
+        <% else %>
+          <%= item %>
+        <% end %>
+      <% end %>
     </h1>
   </div>
 
