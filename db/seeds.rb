@@ -541,6 +541,7 @@ Question.create!(content: 'In which country would you find Mohéli National Park
 Question.create!(content: 'Which country is the world’s largest producer of ylang-ylang flowers, which form the base of the famous perfume Chanel No 5?', difficulty: 100, country: comoros)
 Question.create!(content: 'Which country is the only place in the world where you can see the endangered Livingstone fruit bats?', difficulty: 200, country: comoros)
 Question.create!(content: 'Langouste a la Vanille is the national dish of which country?', difficulty: 200, country: comoros)
+Question.create!(content: 'The highest peak of which country is Karthala Peak?', difficulty: 200, country: comoros)
 Question.create!(content: 'Which country is made up of the islands Grande Comore, Moheli, Anjouan and Mayotte?', difficulty: 300, country: comoros)
 Question.create!(content: 'Which country is known as the “Perfume Isles” due to its fragrant plant life?', difficulty: 300, country: comoros)
 Question.create!(content: 'Which country is located in the Indian Ocean, between Mozambique and Madagascar?', difficulty: 400, country: comoros)
@@ -589,6 +590,7 @@ Question.create!(content: 'In which country would you hear the common phrase “
 Question.create!(content: 'Which country’s name translates as Rich Coast?', difficulty: 300, country: costa_rica)
 Question.create!(content: 'Which country borders Nicaragua and Panama?', difficulty: 400, country: costa_rica)
 Question.create!(content: 'Colón is the currency of which country?', difficulty: 400, country: costa_rica)
+Question.create!(content: 'San Jose is the capital city of which country?', difficulty: 400, country: costa_rica)
 
 # Country: Croatia
 croatia = Country.create!(name: 'Croatia', continent: 'Europe', capital: 'Zagreb', currency: 'Croatian Kuna (HRK)')
@@ -603,6 +605,7 @@ Question.create!(content: 'In which country would you find Hum, thought to be th
 Question.create!(content: 'Which country borders Bosnia and Herzegovina, Hungary, Montenegro, Serbia and Slovenia?', difficulty: 300, country: croatia)
 Question.create!(content: 'In which country would you find the popular islands Hvar and Korčula?', difficulty: 400, country: croatia)
 Question.create!(content: 'In which country was Kings Landing in Game of Thrones filmed?', difficulty: 400, country: croatia)
+Question.create!(content: 'Zagreb is the cpaitl city of which country?', difficulty: 400, country: croatia)
 
 # Country: Cuba
 cuba = Country.create!(name: 'Cuba', continent: 'North America', capital: 'Havana', currency: 'Cuban Peso (CUP)')
@@ -617,6 +620,7 @@ Question.create!(content: 'In which country was the daiquiri cocktail invented?'
 Question.create!(content: 'In which country did Fidel Castro hold power for 49 years?', difficulty: 300, country: cuba)
 Question.create!(content: 'Which country is the only country in the Caribbean to have a railway?', difficulty: 400, country: cuba)
 Question.create!(content: 'Which country is the largest country in the Caribbean?', difficulty: 400, country: cuba)
+Question.create!(content: 'Havana is the capital city of which country?', difficulty: 400, country: cuba)
 
 # Country: Cyprus
 cyprus = Country.create!(name: 'Cyprus', continent: 'Asia', capital: 'Nicosia', currency: 'Euro (EUR)')
@@ -631,6 +635,7 @@ Question.create!(content: 'Which country’s official languages are Turkish and 
 Question.create!(content: 'Which country is the third largest and third most populous island in the Mediterranean?', difficulty: 300, country: cyprus)
 Question.create!(content: 'Which country is split in half with a Turkish side and a Greek side?', difficulty: 400, country: cyprus)
 Question.create!(content: 'Which island country is geographically in Asia but is culturally European?', difficulty: 400, country: cyprus)
+Question.create!(content: 'Nicosia is the capital city of which country?', difficulty: 400, country: cyprus)
 
 # Country: Czechia
 czechia = Country.create!(name: 'Czechia', continent: 'Europe', capital: 'Prague', currency: 'Czech Koruna (CZK)')
@@ -645,6 +650,7 @@ Question.create!(content: 'From which country is Tennis Player Martina Navratilo
 Question.create!(content: 'Which country borders Austria, Germany, Poland, and Slovakia?', difficulty: 300, country: czechia)
 Question.create!(content: 'Which country changed its name from the Czech Republic in 2013?', difficulty: 400, country: czechia)
 Question.create!(content: 'Along with Slovakia, which country was previously part of Czechoslovakia?', difficulty: 400, country: czechia)
+Question.create!(content: 'Prague is the capital city of which country', difficulty: 400, country: czechia)
 
 # Country: Ivory Coast (Côte d'Ivoire)
 ivory_coast = Country.create!(name: 'Ivory Coast', continent: 'Africa', capital: 'Yamoussoukro', currency: 'West African CFA Franc (XOF)')
