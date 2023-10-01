@@ -322,8 +322,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
-  httparty
   geocoder
+  httparty
   jbuilder
   jsbundling-rails
   mini_magick
