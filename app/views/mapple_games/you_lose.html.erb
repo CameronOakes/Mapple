@@ -32,30 +32,32 @@
     margin: 0;
     text-align: center;
   }
+
+  #map {
+  border-radius: 50px;
+  border: 1px solid #5383b1;
+  }
 </style>
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
-
-  <div id="map" style='width: 400px; height: 300px;'>
-
-
-  </div>
   <div class="MappleContainer2">
-  <% if @country_id %>
-    <% @country = Country.find_by(id: @country_id) %>
+    <h3>Try again tomorrow!</h3>
     <h3>the daily country was</h3>
-    <h1><%= @country.name.upcase %></h1>
-    <h3>you lose!</h3>
-    <h3>you scored <%= @user_game.score %></h3>
-    <div class="MappleContainer3">
-    <p><%= @country.name %> is located in </p>
-    <h3 class="centered"><%= @country.continent.upcase %></h3>
-    <p>the capital of <%= @country.name.upcase %> is</p>
+    <h1><%= @country.name.upcase %>!</h1>
+      <div data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>" id="map" style='width: 600px; height: 300px;'>
+    <h1>you scored <%= @user_game.score %></h1>
+    <h3 class="centered">with <%= @user_game.guess_count %> guesses!</h3>
+  </div>
+
+  <div class="MappleContainer3">
+    <p><%= @country.name.upcase %> is located in </p>
+    <h3 class="centered"><%= @country.continent.upcase %></strong></h3>
+    <p>the capital of <%= @country.name.upcase %> is </p>
     <h3 class="centered"><%= @country.capital.upcase %></h3>
-    </div>
-  <% end %>
-   <div class="mt-3">
+  </div>
+
+  <div class="mt-3">
     <%= simple_form_for @mapple_game do |f| %>
-      <%= f.submit "play again?", class: "MappleButton" %>
+      <%= link_to "Todays High Scores", high_score_path, class: "MappleButton" %>
     <% end %>
   </div>
   </div>
