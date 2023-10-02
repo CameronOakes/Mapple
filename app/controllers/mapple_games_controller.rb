@@ -41,8 +41,8 @@ class MappleGamesController < ApplicationController
     end
 
     @question = @questions[@counter].content if @counter < 10
-    
-    if @counter == 8
+
+    if @counter == 9
       @flag_image_url = fetch_flag_image(@mapple_game.country.name)
     end
 
@@ -91,8 +91,15 @@ class MappleGamesController < ApplicationController
 
   def you_lose
     @country_id = params[:country_id]
+    @country = Country.find_by(id: @country_id)
     @user_game = @user.mapple_games.last
     @mapple_game = MappleGame.new
+    @markers = [
+      {
+        lat: @country.latitude,
+        lng: @country.longitude
+      }
+    ]
     session.delete(:country_letters)
   end
 

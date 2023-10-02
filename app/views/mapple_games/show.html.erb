@@ -10,8 +10,16 @@
       <% split.each_with_index do |letter, i| %>
         <% if i + 2 < @counter && i == randnum %>
           <% session[:country_letters][i] = letter %>
+        <% end %>
       <% end %>
-      <%= session[:country_letters].join(' ') %>
+
+      <% session[:country_letters].each do |item| %>
+        <% if item == '_' %>
+          <span class="MappleBox"></span>
+        <% else %>
+          <%= item %>
+        <% end %>
+      <% end %>
     </h1>
   </div>
 
@@ -27,15 +35,16 @@
         <%= f.submit 'guess', class: 'MappleGuessButton' %>
       </div>
     <% end %>
+
+    <div data-controller="flag">
+      <% if @flag_image_url.present? %>
+        <div class="mt-3" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <button data-action="click->flag#toggleImage" class="MappleGuessButton">hint?</button>
+          <img src="<%= @flag_image_url %>" alt="Flag Image" style="max-width: 200px; height: auto;" data-flag-target="image" class="data-disabled rounded">
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <% if @flag_image_url.present? %>
-   <div class="mt-3" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-     <p style="margin-bottom: 10px;"><strong>Hint:</strong></p>
-     <img src="<%= @flag_image_url %>" alt="Flag Image" style="max-width: 300px; height: auto;">
-   </div>
-  <% end %>
-
 
   <% @mapple_game.score -= @questions[@counter].difficulty if @guess && @guess != @mapple_game.country.name %>
   <% @mapple_game.save %>
