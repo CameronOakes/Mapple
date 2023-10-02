@@ -42,7 +42,7 @@ class MappleGamesController < ApplicationController
 
     @question = @questions[@counter].content if @counter < 10
 
-    if @counter == 8
+    if @counter == 9
       @flag_image_url = fetch_flag_image(@mapple_game.country.name)
     end
 
