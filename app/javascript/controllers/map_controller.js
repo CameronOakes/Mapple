@@ -24,7 +24,7 @@ export default class extends Controller {
 
     this.end = {
       center: [this.markersValue[0].lng, this.markersValue[0].lat],
-      zoom: 5.5,
+      zoom: 3.5,
       bearing: 0,
       pitch: 15
     };
