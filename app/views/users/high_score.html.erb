@@ -64,17 +64,13 @@
         .game-history {
             list-style: none;
             padding: 0;
-            height: 400px;
+            height: 450px;
             overflow-y: auto;
         }
         .game-history li {
             margin-bottom: 10px;
         }
-        .MappleScroll {
-            float: right;
-            margin-right: 25px;
-            cursor: pointer;
-        }
+
         .fas.fa-copy {
             font-size: 24px;
             color: #c5cbe4;
@@ -103,7 +99,10 @@
             height: 100%;
             object-fit: cover;
         }
-
+.carousel-item{
+    float:none;
+    transition: 0s !important;
+}
             .score-container {
         display: flex;
         justify-content: center;
@@ -233,9 +232,7 @@
         </li>
     <% end %>
 </ol>
-                <div class="MappleScroll" id="scrollDownArrow">
-                    <%= image_tag asset_url('Mapple_Arrow.png'), alt: 'Scroll Down', width: 20, height: 20 %>
-                </div>
+
             </div>
         </div>
     </div>
@@ -257,13 +254,12 @@
     </script>
     <script>
 function shareScoreOnTwitter() {
-    const scoreElement = document.querySelector('.score-value');
-    const userScore = scoreElement.textContent.trim();
-    const message = `I completed Mapple in 3 guesses with a score of ${userScore}`;
+    const completedMessageElement = document.querySelector('.completed-message');
+    const message = completedMessageElement.textContent.trim();
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
     window.open(twitterUrl, '_blank');
 }
-
 </script>
+
 </body>
 </html>
