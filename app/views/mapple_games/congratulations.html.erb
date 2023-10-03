@@ -49,15 +49,16 @@
   #map {
   border-radius: 50px;
   border: 1px solid #5383b1;
+  margin-bottom: 25px;
   }
 </style>
 
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
   <div class="MappleContainer2">
+    <h3>you scored <%= @user_game.score %></h3>
     <h3>the daily country was</h3>
     <h1><%= @country.name.upcase %>!</h1>
       <div data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>" id="map" style='width: 600px; height: 300px;'>
-    <h1>you scored <%= @user_game.score %></h1>
     <h3 class="centered">with <%= @user_game.guess_count %> guesses!</h3>
   </div>
 
