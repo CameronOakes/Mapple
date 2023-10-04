@@ -48,7 +48,7 @@
             font-size: 15px;
             font-family: 'Comfortaa';
             text-align: center;
-            color: #c5cbe4;
+            color: #8d91a3;
         }
 
         .user-info, .game-stats {
@@ -75,6 +75,7 @@
 
         .game-history li {
           margin-bottom: 10px;
+          border-bottom: 2px solid #6c757d4f;
         }
 
 .MappleScroll {
@@ -101,14 +102,26 @@
                 <p><%= @total_score %></p>
             </div>
             <div class="game-stats">
-                <h1>last 10</h1>
+                <h1>last 10 games</h1>
                 <ul class="game-history">
                     <% @user.mapple_games.order(created_at: :desc).limit(10).each do |game| %>
-                    <li>
-                        <h5>score:</h5><p> <%= game.score %></p>
-                        <h5>date:</h5><p> <%= game.created_at.strftime("%d/%m/%Y") %></p>
-                        <h5>guessed country:</h5><p> <%= game.country.name %></p>
-                        <h5>total guesses:</h5><p> <%= game.guess_count %></p>
+                    <li class="text-center">
+                      <div class="d-flex justify-content-center"><!-- Center the entire content -->
+                        <div class="pr-3">
+                          <h5>score:</h5><p><%= game.score %></p>
+                        </div>
+                        <div>
+                          <h5>date:</h5><p><%= game.created_at.strftime("%d/%m/%Y") %></p>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-center"><!-- Center the entire content -->
+                        <div class="pr-3">
+                          <h5>guessed country:</h5><p><%= game.country.name %></p>
+                        </div>
+                        <div>
+                          <h5>total guesses:</h5><p><%= game.guess_count %></p>
+                        </div>
+                      </div>
                     </li>
                     <% end %>
                 </ul>
