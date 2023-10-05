@@ -5,6 +5,23 @@ import "bootstrap"
 
 document.addEventListener('turbo:load',() => {
 
+// MAPPLE-GAME: Clickable info box.
+    const clickableImage = document.getElementById("mapple-info");
+    const revealedImage = document.getElementById("hint-reveal");
+
+    revealedImage.style.display = "none";
+    clickableImage.classList.add("blinking");
+
+    clickableImage.addEventListener("click", function () {
+      if (revealedImage.style.display === "none") {
+        revealedImage.style.display = "block";
+        clickableImage.classList.remove("blinking");
+      } else {
+        revealedImage.style.display = "none";
+        clickableImage.classList.add("blinking");
+      }
+    });
+
 // LOG-IN: Makes the "Remember Me Checkbox" into a styled text that changes when clicked.
   const rememberMeCheckbox = document.querySelector('#user_remember_me');
 
