@@ -93,6 +93,7 @@ class MappleGamesController < ApplicationController
     @country_id = params[:country_id]
     @country = Country.find_by(id: @country_id)
     @user_game = @user.mapple_games.last
+    @user_game.score = 0
     @mapple_game = MappleGame.new
     @markers = [
       {
