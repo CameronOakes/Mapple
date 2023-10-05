@@ -3,20 +3,21 @@
 
 <div class="d-flex flex-column justify-content-center align-items-center vh-100">
 
-  <div>
+  <div class="text-center">
     <h1>
       <% split = @mapple_game.country.name.split('') %>
       <% randnum = rand(0..split.length) %>
       <% split.each_with_index do |letter, i| %>
+        <% session[:country_letters][i] = ' ' if letter == ' ' %>
         <% if i + 2 < @counter && i == randnum %>
           <% session[:country_letters][i] = letter %>
         <% end %>
       <% end %>
 
-      <%= session[:country_letters] %>
-
       <% session[:country_letters].each do |item| %>
-        <% if item == '_' %>
+        <% if item == ' ' %>
+          <h1><%= ' ' %></h1>
+        <% elsif item == '_' %>
           <span class="MappleBox"></span>
         <% else %>
           <%= item %>
