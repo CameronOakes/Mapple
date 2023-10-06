@@ -25,16 +25,16 @@ document.addEventListener('turbo:load',() => {
 // LOG-IN: Makes the "Remember Me Checkbox" into a styled text that changes when clicked.
   const rememberMeCheckbox = document.querySelector('#user_remember_me');
 
-  if (rememberMeCheckbox) {
-    rememberMeCheckbox.addEventListener('click', function() {
-      const label = document.querySelector('label[for="user_remember_me"]');
+  const label = document.querySelector('label[for="user_remember_me"]');
 
-      if (rememberMeCheckbox.checked) {
-        label.textContent = 'remembered!';
+  if (label) {
+    if (rememberMeCheckbox.checked) {
+      label.textContent = 'remembered!';
+    } else {
+      label.textContent = 'remember?';
+    }
       } else {
-        label.textContent = 'remember?';
-      }
-    });
+    console.error('Label element not found. Check your HTML structure.');
   }
 
 // HOMEPAGE: Makes it so the dropdown menu will close if you click anywhere on the screen and the animation will reset the dropdown.
