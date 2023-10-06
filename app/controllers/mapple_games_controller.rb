@@ -27,7 +27,7 @@ class MappleGamesController < ApplicationController
 
     if params[:counter].present? && params[:counter].to_i < 11
       @counter = params[:counter].to_i + 1
-      @mapple_game.guess_count = @counter + 1
+      @mapple_game.guess_count = @counter
     else
       @counter = 0
     end
