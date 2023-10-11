@@ -38,6 +38,13 @@
     <h3><%= @question %></h5>
   </div>
 
+  <% @not_a_country = 'is not a country' if params[:query] != '' && !@country_names.include?(params[:query].capitalize) && params[:query] %>
+
+
+  <%# TODO: make this a small alert %>
+  <p><%= params[:query] if @not_a_country %> <%= @not_a_country %></p>
+
+
   <div class="mt-3">
     <%= form_with url: mapple_game_path(@mapple_game), method: :get do |f| %>
       <%= f.text_field :query, id: 'country-input', autocomplete: 'off', placeholder: "place your guess", data: { insert_question_target: "input" }, class: "MappleGuess", autofocus: true %>
