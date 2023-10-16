@@ -24,6 +24,8 @@ class MappleGamesController < ApplicationController
     @wrong_answer = ''
     @guess = params[:query].capitalize if params[:query]
     @country_names = Country.pluck(:name)
+    session[:previous_guesses] = []
+    session[:previous_guesses] << @guess
 
     if params[:counter].present? && params[:counter].to_i < 11
       @counter = params[:counter].to_i + 1
