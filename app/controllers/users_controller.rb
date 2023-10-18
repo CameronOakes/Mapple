@@ -157,13 +157,14 @@ class UsersController < ApplicationController
   end
 
   def calculate_top_users_for_today
-    top_users = User.joins(:mapple_games)
-                    .where("mapple_games.created_at >= ?", Date.today.beginning_of_day)
-                    .group('users.id, users.username')
-                    .select('users.id, users.username, SUM(mapple_games.score) as total_score')
-                    .order('total_score DESC')
-                    .limit(10)
-
-    top_users
+    latest_games = MappleGame.select('user_id, MAX(created_at) as latest_created_at')
+                             .where("created_at >= ?", Date.today.beginning_of_day)
+                             .group(:user_id)
+    @top_users = User.joins("INNER JOIN (#{latest_games.to_sql}) as latest_games ON users.id = latest_games.user_id")
+                     .joins(:mapple_games)
+                     .where("mapple_games.user_id = users.id AND mapple_games.created_at = latest_games.latest_created_at")
+                     .select('users.id, users.username, mapple_games.score as last_game_score')
+                     .order('mapple_games.score DESC')
+                     .limit(10)
   end
 end
